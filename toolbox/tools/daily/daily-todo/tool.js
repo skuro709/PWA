@@ -1,0 +1,1 @@
+export const tool={id:'daily-todo',name:'ToDoリスト',description:'タスク管理',category:'daily',async run(ctx){return ctx.execute('daily-todo');}};export default tool;
