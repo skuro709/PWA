@@ -1,0 +1,230 @@
+# line218(path: ) 必須 
+# name: ←名称
+
+name: toolbox
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "version"
+        required: true
+        default: "1.0.1"
+      deploy:
+        description: "Update & Deploy"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          set -e
+
+          required_files=(
+            "index.html"
+            "manifest.json"
+            "sw.js"
+            "README.md"
+            "SPECIFICATION.md"
+            "DEVELOPER.md"
+            "data/tool-registry.js"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: Missing required file: $file"
+              exit 1
+            fi
+          done
+
+          echo "All required files exist."
+
+      - name: Check tool count
+        run: |
+          TOOL_COUNT=$(find tools -type f -name "*.js" | wc -l)
+
+          echo "Detected tool modules: $TOOL_COUNT"
+
+          if [ "$TOOL_COUNT" -lt 60 ]; then
+            echo "ERROR: At least 60 tool modules are required."
+            exit 1
+          fi
+
+      - name: Validate version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if ! echo "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "ERROR: Invalid version format."
+            echo "Expected format: x.y.z"
+            exit 1
+          fi
+
+          echo "Version: $VERSION"
+
+      - name: Validate manifest
+        run: |
+          python - <<'PY'
+          import json
+
+          with open("manifest.json", "r", encoding="utf-8") as f:
+              manifest = json.load(f)
+
+          required = [
+              "name",
+              "short_name",
+              "display",
+              "start_url",
+              "scope",
+              "icons"
+          ]
+
+          for key in required:
+              if key not in manifest:
+                  raise SystemExit(
+                      f"ERROR: manifest.json is missing '{key}'"
+                  )
+
+          print("manifest.json is valid.")
+          PY
+
+  update:
+    name: Update Application
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update application version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          echo "$VERSION" > VERSION
+
+          if [ -f "package.json" ]; then
+            python - <<'PY'
+          import json
+          import os
+
+          path = "package.json"
+
+          with open(path, "r", encoding="utf-8") as f:
+              data = json.load(f)
+
+          data["version"] = os.environ["VERSION"]
+
+          with open(path, "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+          PY
+          fi
+
+      - name: Update Service Worker cache version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          path = Path("sw.js")
+
+          if not path.exists():
+              raise SystemExit("ERROR: sw.js not found.")
+
+          text = path.read_text(encoding="utf-8")
+          version = os.environ["VERSION"]
+
+          pattern = r"(CACHE_VERSION\s*=\s*['\"])[^'\"]+(['\"])"
+
+          updated, count = re.subn(
+              pattern,
+              rf"\g<1>{version}\g<2>",
+              text,
+              count=1
+          )
+
+          if count == 0:
+              text = (
+                  f"const CACHE_VERSION = '{version}';\n"
+                  + text
+              )
+          else:
+              text = updated
+
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Show version
+        run: |
+          echo "MY TOOLBOX version:"
+          cat VERSION
+
+      - name: Commit version update
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add VERSION sw.js package.json 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No version changes to commit."
+          else
+            git commit -m "chore: update MY TOOLBOX to v${VERSION}"
+            git push
+          fi
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: update
+    if: ${{ inputs.deploy == true }}
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "PWA/toolbox/index"
+          # ルートなら"."
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment complete
+        run: |
+          echo "MY TOOLBOX deployment completed."
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
