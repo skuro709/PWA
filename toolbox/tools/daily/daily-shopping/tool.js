@@ -1,0 +1,1 @@
+export const tool={id:'daily-shopping',name:'買い物リスト',description:'チェック管理',category:'daily',async run(ctx){return ctx.execute('daily-shopping');}};export default tool;
