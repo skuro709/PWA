@@ -1,0 +1,1 @@
+export const tool={id:'image-crop',name:'画像トリミング',description:'範囲指定',category:'image',async run(ctx){return ctx.execute('image-crop');}};export default tool;
