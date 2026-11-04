@@ -1,0 +1,1 @@
+export const tool={id:'text-duplicate',name:'重複行削除',description:'重複データ削除',category:'text',async run(ctx){return ctx.execute('text-duplicate');}};export default tool;
