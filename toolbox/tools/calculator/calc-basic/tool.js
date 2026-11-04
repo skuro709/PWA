@@ -1,0 +1,1 @@
+export const tool={id:'calc-basic',name:'高機能電卓',description:'四則演算・計算履歴',category:'calculator',async run(ctx){return ctx.execute('calc-basic');}};export default tool;
