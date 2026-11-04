@@ -1,4 +1,4 @@
-const CACHE='my-toolbox-v1.0.0';
+const CACHE='sk-toolbox-v1.0.1';
 const ASSETS=[
  './','./index.html','./manifest.json',
  './assets/css/base.css','./assets/css/layout.css','./assets/css/components.css','./assets/css/tools.css','./assets/css/themes.css',
