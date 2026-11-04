@@ -1,0 +1,1 @@
+export const tool={id:'dev-url-parser',name:'URL Parser',description:'URL解析',category:'developer',async run(ctx){return ctx.execute('dev-url-parser');}};export default tool;
