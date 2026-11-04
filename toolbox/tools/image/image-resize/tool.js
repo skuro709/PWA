@@ -1,0 +1,1 @@
+export const tool={id:'image-resize',name:'画像リサイズ',description:'サイズ変更',category:'image',async run(ctx){return ctx.execute('image-resize');}};export default tool;
