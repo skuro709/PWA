@@ -1,11 +1,22 @@
 name: JarWorld
-# Manual Update
 
 on:
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Update & deploy"
+        required: true
+        default: true
+        type: boolean
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: jarworld-manual-update
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -57,9 +68,37 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add PWA/jarworld/src/wasm/dist/simulation.js
           git add PWA/jarworld/src/wasm/dist/simulation.wasm
+
           if git diff --cached --quiet; then
             echo "No WebAssembly changes to commit."
           else
             git commit -m "Update JarWorld WebAssembly"
             git push
           fi
+
+      - name: Prepare GitHub Pages
+        if: ${{ inputs.deploy == true }}
+        run: |
+          rm -rf public
+          mkdir -p public
+          cp -R PWA/jarworld/index.html public/
+          cp -R PWA/jarworld/styles.css public/
+          cp -R PWA/jarworld/manifest.webmanifest public/
+          cp -R PWA/jarworld/sw.js public/
+          cp -R PWA/jarworld/src public/
+          cp -R PWA/jarworld/assets public/
+
+      - name: Configure GitHub Pages
+        if: ${{ inputs.deploy == true }}
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        if: ${{ inputs.deploy == true }}
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        if: ${{ inputs.deploy == true }}
+        id: deployment
+        uses: actions/deploy-pages@v4
