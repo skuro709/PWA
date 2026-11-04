@@ -1,0 +1,1 @@
+export const tool={id:'misc-keyboard',name:'キーボードテスト',description:'キー入力確認',category:'miscellaneous',async run(ctx){return ctx.execute('misc-keyboard');}};export default tool;
