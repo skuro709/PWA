@@ -1,0 +1,1 @@
+export const tool={id:'convert-unit',name:'単位変換',description:'長さ・重さ・温度',category:'converter',async run(ctx){return ctx.execute('convert-unit');}};export default tool;
