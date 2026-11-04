@@ -1,0 +1,1 @@
+export const tool={id:'daily-password',name:'パスワード生成',description:'ランダム生成',category:'daily',async run(ctx){return ctx.execute('daily-password');}};export default tool;
