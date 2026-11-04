@@ -1,43 +1,156 @@
 :root {
-  --bg:#F8FAFC
-  --card:#FFF
-  --text:#0F172A
-  --sub:#64748B
-  --accent:#2563EB
-  --border:#E2E8F0
-  --sidebar:260px
+  --bg: #F8FAFC;
+  --card: #FFF;
+  --text: #0F172A;
+  --sub: #64748B;
+  --accent: #2563EB;
+  --border: #E2E8F0;
+  --sidebar: 260px;
 }
+
 body {
-  background:var(--bg)
-  color:var(--text)
+  background: var(--bg);
+  color: var(--text);
 }
-.app-shell { min-height:100vh }
-.sidebar { position:fixed inset:0 auto 0 0 width:var(--sidebar) padding:1rem border-right:1px solid var(--border) background:var(--card) overflow:auto }
-.main { margin-left:var(--sidebar) min-height:100vh }
-.topbar { height:72px display:flex align-items:center gap:1rem padding:0 1.5rem border-bottom:1px solid var(--border) background:color-mix(in srgb,var(--card) 94%,transparent) position:sticky top:0 z-index:5 }
-.topbar h1 { font-size:1.35rem margin:0 }
-.status-area { margin-left:auto }
-.content { padding:1.5rem max-width:1280px margin:auto }
-.bottom-nav { display:none }
-.hero { display:grid gap:1rem margin-bottom:1.5rem }
-.hero h2 { font-size:clamp(1.6rem,4vw,2.4rem) margin:.25rem 0 }
-.grid { display:grid grid-template-columns:repeat(4,minmax(0,1fr)) gap:1rem }
-.tool-grid { display:grid grid-template-columns:repeat(4,minmax(0,1fr)) gap:1rem }
-.two-col { display:grid grid-template-columns:1fr 1fr gap:1rem }
-@media (max-width:1000px) {
-  .grid,.tool-grid { grid-template-columns:repeat(3,minmax(0,1fr)) }
+
+.app-shell {
+  min-height: 100vh;
 }
-@media (max-width:760px) {
-  .sidebar { display:none }
-  .main { margin-left:0 padding-bottom:72px }
-  .topbar { padding:0 .75rem }
-  .content { padding:1rem }
-  .bottom-nav { display:flex position:fixed z-index:20 bottom:0 left:0 right:0 height:64px background:var(--card) border-top:1px solid var(--border) justify-content:space-around }
-  .grid,.tool-grid { grid-template-columns:repeat(2,minmax(0,1fr)) }
-  .two-col { grid-template-columns:1fr }
-  .topbar { height:64px }
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar);
+  padding: 1rem;
+  border-right: 1px solid var(--border);
+  background: var(--card);
+  overflow: auto;
 }
-@media (min-width:1200px) {
-  .content { padding:2rem }
-  .tool-grid { grid-template-columns:repeat(5,minmax(0,1fr)) }
+
+.main {
+  margin-left: var(--sidebar);
+  min-height: 100vh;
+}
+
+.topbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 94%, transparent);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.topbar h1 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.status-area {
+  margin-left: auto;
+}
+
+.content {
+  padding: 1.5rem;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.bottom-nav {
+  display: none;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin: .25rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .grid,
+  .tool-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+    padding-bottom: 72px;
+  }
+
+  .topbar {
+    padding: 0 .75rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    justify-content: space-around;
+  }
+
+  .grid,
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    height: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content {
+    padding: 2rem;
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }
