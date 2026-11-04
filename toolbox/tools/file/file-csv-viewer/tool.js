@@ -1,0 +1,1 @@
+export const tool={id:'file-csv-viewer',name:'CSV Viewer',description:'表形式表示',category:'file',async run(ctx){return ctx.execute('file-csv-viewer');}};export default tool;
