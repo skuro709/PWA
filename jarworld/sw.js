@@ -1,0 +1,5 @@
+const CACHE="jarworld-final-v1";
+const CORE=["./","./index.html","./styles.css","./manifest.webmanifest","./src/main.js","./src/simulation.js","./src/renderer2d.js","./src/renderer3d.js","./src/environment.js","./src/storage.js","./src/sharing.js","./src/wasm/loader.js","./assets/icons/icon.svg","./assets/icons/icon-192.png","./assets/icons/icon-512.png"];
+self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener("activate",e=>e.waitUntil(self.clients.claim()));
+self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(cache=>cache.put(e.request,copy));return r}).catch(()=>caches.match("./index.html"))))});
