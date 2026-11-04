@@ -1,0 +1,1 @@
+export const tool={id:'calc-tax',name:'消費税計算',description:'税込・税抜',category:'calculator',async run(ctx){return ctx.execute('calc-tax');}};export default tool;
