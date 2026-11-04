@@ -1,0 +1,1 @@
+export const tool={id:'dev-uuid',name:'UUID生成',description:'UUID v4生成',category:'developer',async run(ctx){return ctx.execute('dev-uuid');}};export default tool;
