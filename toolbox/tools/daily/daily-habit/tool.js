@@ -1,0 +1,1 @@
+export const tool={id:'daily-habit',name:'習慣トラッカー',description:'継続記録',category:'daily',async run(ctx){return ctx.execute('daily-habit');}};export default tool;
