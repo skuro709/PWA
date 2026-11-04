@@ -1,0 +1,1 @@
+export const tool={id:'misc-fortune',name:'おみくじ',description:'ランダム結果',category:'miscellaneous',async run(ctx){return ctx.execute('misc-fortune');}};export default tool;
