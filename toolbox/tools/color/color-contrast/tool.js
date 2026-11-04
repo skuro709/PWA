@@ -1,0 +1,1 @@
+export const tool={id:'color-contrast',name:'コントラスト確認',description:'WCAG基準確認',category:'color',async run(ctx){return ctx.execute('color-contrast');}};export default tool;
