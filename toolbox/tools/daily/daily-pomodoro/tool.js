@@ -1,0 +1,1 @@
+export const tool={id:'daily-pomodoro',name:'ポモドーロタイマー',description:'集中・休憩',category:'daily',async run(ctx){return ctx.execute('daily-pomodoro');}};export default tool;
