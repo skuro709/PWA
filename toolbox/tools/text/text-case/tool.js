@@ -1,0 +1,1 @@
+export const tool={id:'text-case',name:'大文字・小文字変換',description:'英字変換',category:'text',async run(ctx){return ctx.execute('text-case');}};export default tool;
