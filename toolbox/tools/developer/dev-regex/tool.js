@@ -1,0 +1,1 @@
+export const tool={id:'dev-regex',name:'正規表現テスター',description:'マッチ確認',category:'developer',async run(ctx){return ctx.execute('dev-regex');}};export default tool;
