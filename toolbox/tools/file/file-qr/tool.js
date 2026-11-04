@@ -1,0 +1,1 @@
+export const tool={id:'file-qr',name:'QRコード生成',description:'URL・文字列',category:'file',async run(ctx){return ctx.execute('file-qr');}};export default tool;
