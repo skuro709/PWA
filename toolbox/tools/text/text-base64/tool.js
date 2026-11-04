@@ -1,0 +1,1 @@
+export const tool={id:'text-base64',name:'Base64変換',description:'エンコード・デコード',category:'text',async run(ctx){return ctx.execute('text-base64');}};export default tool;
