@@ -1,0 +1,26 @@
+{
+  "name": "SK TOOLBOX",
+  "short_name": "TOOLBOX",
+  "description": "日常のあらゆる作業を支える、オフライン対応ツール",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "ja",
+  "dir": "ltr"
+}
