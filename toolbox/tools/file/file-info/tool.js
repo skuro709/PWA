@@ -1,0 +1,1 @@
+export const tool={id:'file-info',name:'ファイル情報',description:'サイズ・形式',category:'file',async run(ctx){return ctx.execute('file-info');}};export default tool;
