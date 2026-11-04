@@ -1,0 +1,1 @@
+export const tool={id:'daily-stopwatch',name:'ストップウォッチ',description:'ラップタイム',category:'daily',async run(ctx){return ctx.execute('daily-stopwatch');}};export default tool;
