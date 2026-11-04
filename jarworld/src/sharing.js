@@ -1,0 +1,6 @@
+function encode(obj){const bytes=new TextEncoder().encode(JSON.stringify(obj));let s="";for(let i=0;i<bytes.length;i+=0x8000)s+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(s)}
+function decode(s){const bin=atob(s),a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return JSON.parse(new TextDecoder().decode(a))}
+export function makePayload(sim,settings){return{format:"jarworld",version:1,width:sim.width,height:sim.height,region:settings.region,mode:settings.mode,world:sim.serialize(),createdAt:new Date().toISOString()}}
+export function makeShareUrl(payload){const u=new URL(location.href);u.search="";u.hash="world="+encode(payload);return u.toString()}
+export function readSharePayload(){const m=location.hash.match(/^#world=(.+)$/);if(!m)return null;try{return decode(m[1])}catch{return null}}
+export function downloadPayload(payload){const blob=new Blob([JSON.stringify(payload)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="jarworld-world.jarworld";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
