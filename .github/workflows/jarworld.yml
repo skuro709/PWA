@@ -1,4 +1,5 @@
-name: Manual Update JarWorld
+name: JarWorld
+# Manual Update
 
 on:
   workflow_dispatch:
