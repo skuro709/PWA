@@ -1,0 +1,1 @@
+export const tool={id:'dev-json-format',name:'JSON Formatter',description:'整形・検証・圧縮',category:'developer',async run(ctx){return ctx.execute('dev-json-format');}};export default tool;
