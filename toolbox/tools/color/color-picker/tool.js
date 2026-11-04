@@ -1,0 +1,1 @@
+export const tool={id:'color-picker',name:'カラーピッカー',description:'色選択',category:'color',async run(ctx){return ctx.execute('color-picker');}};export default tool;
