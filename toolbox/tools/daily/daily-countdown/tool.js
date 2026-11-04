@@ -1,0 +1,1 @@
+export const tool={id:'daily-countdown',name:'カウントダウン',description:'残日数表示',category:'daily',async run(ctx){return ctx.execute('daily-countdown');}};export default tool;
