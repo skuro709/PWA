@@ -1,0 +1,1 @@
+export const tool={id:'image-rotate',name:'画像回転',description:'角度変更',category:'image',async run(ctx){return ctx.execute('image-rotate');}};export default tool;
