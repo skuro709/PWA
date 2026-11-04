@@ -1,0 +1,1 @@
+export const tool={id:'text-reverse',name:'テキスト反転',description:'文字列逆順',category:'text',async run(ctx){return ctx.execute('text-reverse');}};export default tool;
