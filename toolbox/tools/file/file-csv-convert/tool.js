@@ -1,0 +1,1 @@
+export const tool={id:'file-csv-convert',name:'CSV変換',description:'JSONとの相互変換',category:'file',async run(ctx){return ctx.execute('file-csv-convert');}};export default tool;
