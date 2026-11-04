@@ -1,0 +1,1 @@
+export const tool={id:'text-counter',name:'文字数カウンター',description:'文字数・行数・単語数',category:'text',async run(ctx){return ctx.execute('text-counter');}};export default tool;
