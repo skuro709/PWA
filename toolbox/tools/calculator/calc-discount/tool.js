@@ -1,0 +1,1 @@
+export const tool={id:'calc-discount',name:'割引計算',description:'割引率・値引き額',category:'calculator',async run(ctx){return ctx.execute('calc-discount');}};export default tool;
