@@ -1,0 +1,1 @@
+export const tool={id:'image-compress',name:'画像圧縮',description:'JPEG・WebP',category:'image',async run(ctx){return ctx.execute('image-compress');}};export default tool;
