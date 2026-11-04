@@ -1,0 +1,1 @@
+export const tool={id:'color-convert',name:'カラー変換',description:'HEX・RGB・HSL',category:'color',async run(ctx){return ctx.execute('color-convert');}};export default tool;
