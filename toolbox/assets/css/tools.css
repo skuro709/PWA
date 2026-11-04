@@ -1,6 +1,41 @@
-canvas { max-width:100% height:auto border:1px solid var(--border) border-radius:.5rem }
-.swatch { height:80px border-radius:.7rem border:1px solid var(--border) }
-.kbd { display:inline-grid place-items:center min-width:2.2rem padding:.35rem .5rem border:1px solid var(--border) border-radius:.4rem background:var(--card) margin:.15rem }
-.tool-output-list { display:grid gap:.5rem }
-.check-row { display:flex gap:.5rem align-items:center }
-.timer { font-size:3rem font-variant-numeric:tabular-nums text-align:center padding:1rem }
+canvas {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+}
+
+.swatch {
+  height: 80px;
+  border-radius: .7rem;
+  border: 1px solid var(--border);
+}
+
+.kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.2rem;
+  padding: .35rem .5rem;
+  border: 1px solid var(--border);
+  border-radius: .4rem;
+  background: var(--card);
+  margin: .15rem;
+}
+
+.tool-output-list {
+  display: grid;
+  gap: .5rem;
+}
+
+.check-row {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.timer {
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 1rem;
+}
