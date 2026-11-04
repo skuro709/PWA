@@ -1,0 +1,1 @@
+export const tool={id:'misc-random-number',name:'ランダム数字',description:'範囲指定',category:'miscellaneous',async run(ctx){return ctx.execute('misc-random-number');}};export default tool;
