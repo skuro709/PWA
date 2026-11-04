@@ -1,0 +1,1 @@
+export const tool={id:'text-clean',name:'空白・改行整理',description:'不要文字削除',category:'text',async run(ctx){return ctx.execute('text-clean');}};export default tool;
