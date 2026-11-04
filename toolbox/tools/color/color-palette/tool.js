@@ -1,0 +1,1 @@
+export const tool={id:'color-palette',name:'配色パレット',description:'色の組み合わせ',category:'color',async run(ctx){return ctx.execute('color-palette');}};export default tool;
