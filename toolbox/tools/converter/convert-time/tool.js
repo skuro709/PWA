@@ -1,0 +1,1 @@
+export const tool={id:'convert-time',name:'時間計算',description:'時刻差・経過時間',category:'converter',async run(ctx){return ctx.execute('convert-time');}};export default tool;
