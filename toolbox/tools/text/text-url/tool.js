@@ -1,0 +1,1 @@
+export const tool={id:'text-url',name:'URLエンコード',description:'URL文字列変換',category:'text',async run(ctx){return ctx.execute('text-url');}};export default tool;
