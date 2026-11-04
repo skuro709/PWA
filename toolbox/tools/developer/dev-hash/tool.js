@@ -1,0 +1,1 @@
+export const tool={id:'dev-hash',name:'ハッシュ生成',description:'SHA-256など',category:'developer',async run(ctx){return ctx.execute('dev-hash');}};export default tool;
