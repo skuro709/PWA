@@ -1,0 +1,1 @@
+export const tool={id:'image-color',name:'画像カラー抽出',description:'色取得',category:'image',async run(ctx){return ctx.execute('image-color');}};export default tool;
