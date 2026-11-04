@@ -1,0 +1,1 @@
+export const tool={id:'daily-diary',name:'日記',description:'日別記録',category:'daily',async run(ctx){return ctx.execute('daily-diary');}};export default tool;
