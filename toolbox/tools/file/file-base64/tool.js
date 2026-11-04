@@ -1,0 +1,1 @@
+export const tool={id:'file-base64',name:'Base64ファイル変換',description:'ファイル変換',category:'file',async run(ctx){return ctx.execute('file-base64');}};export default tool;
