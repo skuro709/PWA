@@ -1,0 +1,1 @@
+export const tool={id:'dev-lorem',name:'Lorem Ipsum生成',description:'ダミーテキスト',category:'developer',async run(ctx){return ctx.execute('dev-lorem');}};export default tool;
