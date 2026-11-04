@@ -1,0 +1,1 @@
+export const tool={id:'text-diff',name:'テキスト比較',description:'差分表示',category:'text',async run(ctx){return ctx.execute('text-diff');}};export default tool;
