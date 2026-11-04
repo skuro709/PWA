@@ -1,0 +1,1 @@
+export const tool={id:'dev-json-view',name:'JSON Viewer',description:'ツリー表示',category:'developer',async run(ctx){return ctx.execute('dev-json-view');}};export default tool;
