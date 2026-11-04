@@ -1,0 +1,1 @@
+export const tool={id:'misc-random-string',name:'ランダム文字列',description:'英数字生成',category:'miscellaneous',async run(ctx){return ctx.execute('misc-random-string');}};export default tool;
