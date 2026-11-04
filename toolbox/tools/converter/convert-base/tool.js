@@ -1,0 +1,1 @@
+export const tool={id:'convert-base',name:'進数変換',description:'2・8・10・16進数',category:'converter',async run(ctx){return ctx.execute('convert-base');}};export default tool;
