@@ -1,0 +1,1 @@
+export const tool={id:'misc-business-card',name:'QR付き名刺',description:'名刺情報生成',category:'miscellaneous',async run(ctx){return ctx.execute('misc-business-card');}};export default tool;
