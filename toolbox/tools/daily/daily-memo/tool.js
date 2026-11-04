@@ -1,0 +1,1 @@
+export const tool={id:'daily-memo',name:'メモ帳',description:'自動保存',category:'daily',async run(ctx){return ctx.execute('daily-memo');}};export default tool;
