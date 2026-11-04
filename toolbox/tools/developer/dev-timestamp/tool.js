@@ -1,0 +1,1 @@
+export const tool={id:'dev-timestamp',name:'Timestamp変換',description:'Unix時間変換',category:'developer',async run(ctx){return ctx.execute('dev-timestamp');}};export default tool;
