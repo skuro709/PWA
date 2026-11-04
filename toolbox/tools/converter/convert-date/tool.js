@@ -1,0 +1,1 @@
+export const tool={id:'convert-date',name:'日付計算',description:'日数差・日付加算',category:'converter',async run(ctx){return ctx.execute('convert-date');}};export default tool;
