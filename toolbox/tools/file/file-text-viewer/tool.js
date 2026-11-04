@@ -1,0 +1,1 @@
+export const tool={id:'file-text-viewer',name:'テキスト閲覧',description:'TXT・JSON',category:'file',async run(ctx){return ctx.execute('file-text-viewer');}};export default tool;
