@@ -1,0 +1,1 @@
+export const tool={id:'convert-size',name:'容量変換',description:'KB・MB・GB・TB',category:'converter',async run(ctx){return ctx.execute('convert-size');}};export default tool;
