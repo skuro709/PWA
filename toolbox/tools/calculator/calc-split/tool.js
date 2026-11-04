@@ -1,0 +1,1 @@
+export const tool={id:'calc-split',name:'割り勘計算',description:'人数・端数調整',category:'calculator',async run(ctx){return ctx.execute('calc-split');}};export default tool;
