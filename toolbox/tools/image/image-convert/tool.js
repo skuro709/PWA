@@ -1,0 +1,1 @@
+export const tool={id:'image-convert',name:'画像形式変換',description:'PNG・JPEG・WebP',category:'image',async run(ctx){return ctx.execute('image-convert');}};export default tool;
