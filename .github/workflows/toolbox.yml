@@ -102,7 +102,7 @@ jobs:
           version = os.environ["VERSION"]
 
           updated, count = re.subn(
-              r"(const\s+CACHE\s*=\s*['\"]my-toolbox-v)[^'\"]+(['\"])",
+              r"(const\s+CACHE\s*=\s*['\"]sk-toolbox-v)[^'\"]+(['\"])",
               rf"\g<1>{version}\g<2>",
               text,
               count=1
