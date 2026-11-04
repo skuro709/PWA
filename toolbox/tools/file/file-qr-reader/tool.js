@@ -1,0 +1,1 @@
+export const tool={id:'file-qr-reader',name:'QRコード読み取り',description:'カメラ・画像',category:'file',async run(ctx){return ctx.execute('file-qr-reader');}};export default tool;
