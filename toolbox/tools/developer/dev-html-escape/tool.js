@@ -1,0 +1,1 @@
+export const tool={id:'dev-html-escape',name:'HTMLエスケープ',description:'特殊文字変換',category:'developer',async run(ctx){return ctx.execute('dev-html-escape');}};export default tool;
