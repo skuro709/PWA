@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0d1719">
-  <meta name="description" content="JarWorld - glass jar environment simulation PWA">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#07110f">
+  <meta name="description" content="JarWorld — a quiet world inside a glass jar.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
   <title>JarWorld</title>
 </head>
 <body>
@@ -16,8 +16,8 @@
       <div class="brand">
         <div class="brand-mark" aria-hidden="true"><span></span></div>
         <div>
-          <strong>JarWorld</strong>
-          <small>quiet worlds in glass</small>
+          <div class="brand-name">JarWorld</div>
+          <div class="brand-sub">A quiet world in glass</div>
         </div>
       </div>
       <div class="environment">
@@ -28,174 +28,97 @@
         <span id="seasonLabel">Spring</span>
       </div>
       <div class="top-actions">
-        <button class="icon-button" id="settingsButton" aria-label="Settings" title="Settings"></button>
-        <button class="icon-button" id="shareButton" aria-label="Share" title="Share"></button>
+        <button class="icon-button" id="settingsButton" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8.1 3.8c0-.5-.1-1-.2-1.5l2-1.5-2-3.4-2.4 1a8.4 8.4 0 0 0-2.5-1.5L14.7 2h-4l-.3 3.1a8.4 8.4 0 0 0-2.5 1.5l-2.4-1-2 3.4 2 1.5c-.1.5-.2 1-.2 1.5s.1 1 .2 1.5l-2 1.5 2 3.4 2.4-1a8.4 8.4 0 0 0 2.5 1.5l.3 3.1h4l.3-3.1a8.4 8.4 0 0 0 2.5-1.5l2.4 1 2-3.4-2-1.5c.1-.5.2-1 .2-1.5Z"/></svg></button>
+        <button class="icon-button" id="shareButton" aria-label="Share" title="Share"><svg viewBox="0 0 24 24"><path d="M18 16.1c-.8 0-1.5.3-2 .8l-7.1-4.1c.1-.3.1-.5.1-.8s0-.6-.1-.8L16 7.1c.5.5 1.2.8 2 .8a3 3 0 1 0-3-3c0 .3 0 .6.1.9L8 9.9A3 3 0 1 0 8 14l7.1 4.1c-.1.3-.1.6-.1.9a3 3 0 1 0 3-2.9Z"/></svg></button>
       </div>
     </header>
 
-    <main class="workspace">
-      <section class="scene-panel">
+    <main class="main">
+      <section class="scene-card">
         <div class="scene-toolbar">
           <div class="mode-switch" role="group" aria-label="Display mode">
-            <button id="mode2d" class="mode-button">2D</button>
-            <button id="mode3d" class="mode-button">3D</button>
+            <button id="mode2d" class="mode active">2D</button>
+            <button id="mode3d" class="mode">3D</button>
           </div>
-          <div class="scene-status">
-            <span class="status-dot"></span>
-            <span id="saveStatus">Saved locally</span>
-          </div>
+          <div class="scene-status"><span class="status-led"></span><span id="saveStatus">Saved</span></div>
         </div>
 
-        <div class="jar-stage" id="jarStage">
-          <div class="jar-shadow"></div>
-          <div class="jar-body">
+        <div class="scene-stage" id="sceneStage">
+          <div class="jar-visual" aria-hidden="true">
             <div class="jar-neck"></div>
-            <div class="jar-glass">
-              <div class="jar-liquid-glow"></div>
+            <div class="jar-body">
+              <div class="glass-highlight h1"></div>
+              <div class="glass-highlight h2"></div>
+              <div class="glass-rim"></div>
               <canvas id="canvas2d"></canvas>
               <canvas id="canvas3d"></canvas>
-              <div class="glass-reflection reflection-a"></div>
-              <div class="glass-reflection reflection-b"></div>
-              <div class="glass-rim"></div>
+              <div class="jar-shine"></div>
             </div>
             <div class="jar-base"></div>
           </div>
-        </div>
-
-        <div class="scene-footer">
-          <div>
-            <span class="footer-label">World</span>
-            <strong id="worldStats">0 cells</strong>
-          </div>
-          <div>
-            <span class="footer-label">Local time</span>
-            <strong id="localTime">--:--</strong>
-          </div>
-          <div>
-            <span class="footer-label">State</span>
-            <strong id="worldState">Peaceful</strong>
-          </div>
+          <div class="scene-empty" id="sceneEmpty">Preparing your world...</div>
         </div>
       </section>
 
-      <aside class="control-panel">
-        <section class="panel-card">
-          <div class="panel-heading">
-            <div>
-              <span class="eyebrow">Create</span>
-              <h2>Elements</h2>
-            </div>
-          </div>
-          <div class="element-grid" id="elementGrid">
-            <button class="element-button active" data-element="sand"><span class="element-icon sand-icon"></span><span>Sand</span></button>
-            <button class="element-button" data-element="water"><span class="element-icon water-icon"></span><span>Water</span></button>
-            <button class="element-button" data-element="soil"><span class="element-icon soil-icon"></span><span>Soil</span></button>
-            <button class="element-button" data-element="lava"><span class="element-icon lava-icon"></span><span>Lava</span></button>
-            <button class="element-button" data-element="seed"><span class="element-icon seed-icon"></span><span>Seed</span></button>
-            <button class="element-button" data-element="erase"><span class="element-icon erase-icon"></span><span>Erase</span></button>
-          </div>
-          <div class="brush-row">
-            <label for="brushSize">Brush</label>
-            <input id="brushSize" type="range" min="1" max="5" value="2">
-            <span id="brushValue">2</span>
-          </div>
-        </section>
-
-        <section class="panel-card compact-card">
-          <div class="panel-heading">
-            <div>
-              <span class="eyebrow">Jar</span>
-              <h2>Environment</h2>
-            </div>
-          </div>
-          <div class="setting-list">
-            <button class="setting-row" id="regionButton"><span>Region</span><strong id="regionValue">Japan</strong></button>
-            <button class="setting-row" id="resetButton"><span>Reset world</span><strong>Reset</strong></button>
-          </div>
-        </section>
-
-        <section class="panel-card info-card">
-          <div class="info-icon" aria-hidden="true"></div>
-          <div>
-            <strong>One world, two views</strong>
-            <p>2D is designed for quiet mobile use. 3D reveals the same world from a free camera.</p>
-          </div>
-        </section>
-      </aside>
+      <section class="control-card">
+        <div class="material-grid" role="toolbar" aria-label="Materials">
+          <button class="material active" data-material="sand"><span class="swatch sand"></span><span>Sand</span></button>
+          <button class="material" data-material="water"><span class="swatch water"></span><span>Water</span></button>
+          <button class="material" data-material="soil"><span class="swatch soil"></span><span>Soil</span></button>
+          <button class="material" data-material="lava"><span class="swatch lava"></span><span>Lava</span></button>
+          <button class="material" data-material="seed"><span class="swatch seed"></span><span>Seed</span></button>
+          <button class="material" data-material="erase"><span class="swatch erase"></span><span>Erase</span></button>
+        </div>
+        <label class="range-row"><span>Brush size</span><input id="brushSize" type="range" min="1" max="8" value="3"><output id="brushValue">3</output></label>
+        <div class="utility-row">
+          <button class="secondary" id="resetButton">Reset world</button>
+          <button class="secondary" id="installButton" hidden>Install</button>
+          <div class="world-meta"><span id="cellCount">0 cells</span><span class="sep"></span><span id="engineLabel">WebAssembly</span></div>
+        </div>
+        <div class="info-panel">
+          <div class="info-title">A world that keeps changing</div>
+          <div class="info-copy">Place materials and watch gravity, flow, heat and growth shape the jar over time.</div>
+        </div>
+      </section>
     </main>
 
-    <footer class="bottom-bar">
-      <span>JarWorld v3</span>
-      <span>Local save only</span>
-      <button id="installButton" class="text-button">Install PWA</button>
+    <footer class="footer">
+      <span>JarWorld</span>
+      <span>Local world · Explicit sharing · No account required</span>
     </footer>
   </div>
 
-  <dialog id="settingsDialog">
+  <dialog id="settingsDialog" class="dialog">
     <form method="dialog" class="dialog-card">
-      <div class="dialog-header">
-        <div><span class="eyebrow">Settings</span><h2>JarWorld</h2></div>
-        <button class="icon-button close-button" value="cancel" aria-label="Close"></button>
-      </div>
-      <div class="dialog-section">
-        <label>Display mode</label>
-        <div class="segmented">
-          <button type="button" data-setting-mode="auto">Auto</button>
-          <button type="button" data-setting-mode="2d">2D</button>
-          <button type="button" data-setting-mode="3d">3D</button>
-        </div>
-      </div>
-      <div class="dialog-section">
-        <label>Region</label>
-        <select id="regionSelect">
-          <option value="jp">Japan</option>
-          <option value="kr">Korea</option>
-          <option value="cn">China</option>
-          <option value="sg">Singapore</option>
-          <option value="au">Australia</option>
-          <option value="uk">United Kingdom</option>
-          <option value="fr">France</option>
-          <option value="de">Germany</option>
-          <option value="us-east">US East</option>
-          <option value="us-west">US West</option>
-          <option value="ca">Canada</option>
-          <option value="br">Brazil</option>
-        </select>
-      </div>
-      <div class="dialog-note">Weather is not simulated. Seasonal atmosphere and local time change the presentation.</div>
-      <button class="primary-button" value="default">Done</button>
+      <div class="dialog-head"><h2>Settings</h2><button class="icon-button close" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <label class="field"><span>Region</span><select id="regionSelect"></select></label>
+      <div class="setting-note">JarWorld uses your selected region only for local time and seasonal atmosphere. Location access is not used.</div>
+      <div class="dialog-actions"><button class="primary" value="default">Save</button></div>
     </form>
   </dialog>
 
-  <dialog id="shareDialog">
-    <form method="dialog" class="dialog-card">
-      <div class="dialog-header">
-        <div><span class="eyebrow">Share</span><h2>Share this world</h2></div>
-        <button class="icon-button close-button" value="cancel" aria-label="Close"></button>
-      </div>
-      <p class="dialog-copy">Sharing creates a snapshot. It does not create automatic synchronization between devices.</p>
+  <dialog id="shareDialog" class="dialog">
+    <div class="dialog-card">
+      <div class="dialog-head"><h2>Share world</h2><button class="icon-button close" id="shareClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <p class="setting-note">Sharing creates a snapshot. Changes made later are not synchronized automatically.</p>
       <div class="share-actions">
-        <button type="button" class="primary-button" id="nativeShareButton">Share snapshot</button>
-        <button type="button" class="secondary-button" id="copyShareButton">Copy share link</button>
-        <button type="button" class="secondary-button" id="downloadShareButton">Download .jarworld</button>
-        <label class="secondary-button file-label">Import .jarworld<input id="importFile" type="file" accept=".jarworld,application/json"></label>
+        <button class="primary" id="nativeShare">Share</button>
+        <button class="secondary" id="copyShare">Copy link</button>
+        <button class="secondary" id="downloadWorld">Export .jarworld</button>
+        <label class="secondary file-button">Import .jarworld<input id="importWorld" type="file" accept=".jarworld,application/json"></label>
       </div>
-    </form>
+      <div id="shareMessage" class="share-message"></div>
+    </div>
   </dialog>
 
-  <dialog id="warningDialog">
-    <form method="dialog" class="dialog-card warning-card">
-      <div class="warning-symbol" aria-hidden="true"></div>
-      <span class="eyebrow">3D mode</span>
-      <h2>Higher device load</h2>
-      <p>3D mode uses WebGL and can increase battery use, heat, and fan activity on smartphones. For long sessions, 2D is recommended.</p>
-      <div class="dialog-actions">
-        <button class="secondary-button" value="cancel">Keep 2D</button>
-        <button class="primary-button" id="confirm3dButton" value="default">Use 3D</button>
-      </div>
-    </form>
+  <dialog id="warningDialog" class="dialog">
+    <div class="dialog-card warning-card">
+      <div class="dialog-head"><h2>3D mode</h2><button class="icon-button close" id="warningClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <p>3D mode can use more GPU power, battery and device cooling capacity. On a smartphone, extended use may cause heat or reduced performance.</p>
+      <div class="dialog-actions"><button class="secondary" id="warningCancel">Stay in 2D</button><button class="primary" id="warningConfirm">Use 3D</button></div>
+    </div>
   </dialog>
 
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
