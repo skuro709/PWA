@@ -1,0 +1,1 @@
+export const tool={id:'dev-xml',name:'XML Formatter',description:'整形・検証',category:'developer',async run(ctx){return ctx.execute('dev-xml');}};export default tool;
