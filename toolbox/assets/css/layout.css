@@ -154,3 +154,77 @@ body {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+
+@media (max-width: 760px) {
+
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .main {
+    width: 100%;
+    margin-left: 0;
+    min-width: 0;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .topbar {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .topbar h1 {
+    font-size: 1.15rem;
+  }
+
+  .content {
+    width: 100%;
+    padding: 14px;
+    overflow-x: hidden;
+  }
+
+  .grid,
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .two-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bottom-nav {
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    box-sizing: border-box;
+  }
+
+}
+
+@media (max-width: 380px) {
+
+  .content {
+    padding: 10px;
+  }
+
+  .grid,
+  .tool-grid {
+    gap: 8px;
+  }
+
+  .topbar h1 {
+    font-size: 1.05rem;
+  }
+
+}
