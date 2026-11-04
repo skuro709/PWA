@@ -1,0 +1,1 @@
+import {storage} from './storage.js';export function applyTheme(){const t=storage.get('theme','system');const dark=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.body.classList.toggle('dark',dark)}export function getTheme(){return storage.get('theme','system')}export function setTheme(t){storage.set('theme',t);applyTheme()}

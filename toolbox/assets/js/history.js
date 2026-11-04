@@ -1,0 +1,1 @@
+import {getAll,put,clear} from './database.js';export async function addHistory(toolId){await put('history',{toolId,usedAt:new Date().toISOString()})}export async function listHistory(){return (await getAll('history')).sort((a,b)=>b.usedAt.localeCompare(a.usedAt))}export async function clearHistory(){return clear('history')}

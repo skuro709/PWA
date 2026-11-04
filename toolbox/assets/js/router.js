@@ -1,0 +1,1 @@
+export function route(){return location.hash.replace(/^#/,'')||'/'}export function go(path){location.hash=path}

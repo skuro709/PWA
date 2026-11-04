@@ -1,0 +1,1 @@
+export function searchTools(list,q){q=q.trim().toLocaleLowerCase('ja-JP');if(!q)return list;return list.filter(t=>[t.name,t.description,t.category,...(t.keywords||[])].join(' ').toLocaleLowerCase('ja-JP').includes(q))}
