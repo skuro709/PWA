@@ -1,0 +1,1 @@
+export const tool={id:'misc-roulette',name:'ルーレット',description:'項目抽選',category:'miscellaneous',async run(ctx){return ctx.execute('misc-roulette');}};export default tool;
