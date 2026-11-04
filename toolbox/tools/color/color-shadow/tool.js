@@ -1,0 +1,1 @@
+export const tool={id:'color-shadow',name:'CSS Shadow生成',description:'影のCSS生成',category:'color',async run(ctx){return ctx.execute('color-shadow');}};export default tool;
