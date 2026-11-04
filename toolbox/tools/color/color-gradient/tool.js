@@ -1,0 +1,1 @@
+export const tool={id:'color-gradient',name:'グラデーション生成',description:'CSS生成',category:'color',async run(ctx){return ctx.execute('color-gradient');}};export default tool;
