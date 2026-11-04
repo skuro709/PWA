@@ -1,0 +1,14 @@
+{
+  "name":"JarWorld",
+  "short_name":"JarWorld",
+  "description":"A quiet world inside a glass jar.",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#06100e",
+  "theme_color":"#07110f",
+  "lang":"en",
+  "icons":[
+    {"src":"./assets/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
