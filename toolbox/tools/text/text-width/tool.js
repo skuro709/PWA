@@ -1,0 +1,1 @@
+export const tool={id:'text-width',name:'全角・半角変換',description:'文字幅変換',category:'text',async run(ctx){return ctx.execute('text-width');}};export default tool;
