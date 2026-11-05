@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       deploy:
-        description: "Update & deploy"
+        description: "Update & Deploy"
         required: true
         default: true
         type: boolean
@@ -32,35 +32,29 @@ jobs:
           version: 5.0.1
 
       - name: Build WebAssembly
-        working-directory: PWA/jarworld
-        run: bash scripts/build-wasm.sh
+        run: bash PWA/jarworld/scripts/build-wasm.sh
 
       - name: Verify required files
-        working-directory: PWA/jarworld
-        run: |
-          test -f index.html
-          test -f styles.css
-          test -f manifest.webmanifest
-          test -f sw.js
-          test -f src/main.js
-          test -f src/simulation.js
-          test -f src/renderer2d.js
-          test -f src/renderer3d.js
-          test -f src/environment.js
-          test -f src/storage.js
-          test -f src/sharing.js
-          test -f src/wasm/simulation.cpp
-          test -f src/wasm/simulation.hpp
-          test -f src/wasm/loader.js
-          test -f src/wasm/dist/simulation.js
-          test -f src/wasm/dist/simulation.wasm
-          test -f assets/icons/icon.svg
-          test -f assets/icons/icon-192.png
-          test -f assets/icons/icon-512.png
-
-      - name: Verify index location
         run: |
           test -f PWA/jarworld/index.html
+          test -f PWA/jarworld/styles.css
+          test -f PWA/jarworld/manifest.webmanifest
+          test -f PWA/jarworld/sw.js
+          test -f PWA/jarworld/src/main.js
+          test -f PWA/jarworld/src/simulation.js
+          test -f PWA/jarworld/src/renderer2d.js
+          test -f PWA/jarworld/src/renderer3d.js
+          test -f PWA/jarworld/src/environment.js
+          test -f PWA/jarworld/src/storage.js
+          test -f PWA/jarworld/src/sharing.js
+          test -f PWA/jarworld/src/wasm/simulation.cpp
+          test -f PWA/jarworld/src/wasm/simulation.hpp
+          test -f PWA/jarworld/src/wasm/loader.js
+          test -f PWA/jarworld/src/wasm/dist/simulation.js
+          test -f PWA/jarworld/src/wasm/dist/simulation.wasm
+          test -f PWA/jarworld/assets/icons/icon.svg
+          test -f PWA/jarworld/assets/icons/icon-192.png
+          test -f PWA/jarworld/assets/icons/icon-512.png
 
       - name: Commit updated WebAssembly
         run: |
